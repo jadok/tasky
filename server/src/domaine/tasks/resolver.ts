@@ -20,14 +20,12 @@ export class TasksResolver {
     @Arg("id") id: number
   ) {
     const source = await read('./schema/tasks.json').then((donnee) => donnee);
-    console.log({ source });
     return ((source as unknown) as Task[]).find((element: Task) => element.id === id);
   }
 
   @Query(() => [TasksSchema])
   async lists(@Args() { skip, take }: SampleArgs) {
     const source = await read('./schema/tasks.json').then((data) => data);
-    console.log({ source });
     return source;
   }
 
