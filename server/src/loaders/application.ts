@@ -1,5 +1,4 @@
 import { ExpressConfig } from './express';
-// import { logger } from '../common/logging';
 
 import { GraphqlLoader } from './graphql';
 

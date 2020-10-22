@@ -1,0 +1,32 @@
+ul.tasks {
+  padding-left: 0;
+
+  & > li {
+    border: .05rem solid var(--font-color);
+    list-style-type: none;
+    
+    // allign details data to their "title".
+    & > details > div:nth-child(2) {
+      padding-left: calc(.7rem + 1rem);
+    }
+
+    margin-bottom: 1rem;
+
+    // switch color for the "title" summary to make it more catchy.
+    & summary {
+      background-color: var(--font-color);
+      color: var(--bg-color);
+      padding: .7rem;
+
+      & > div {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+
+    // & .name,
+    // & .confidentiality {
+    //   display: block;
+    // }
+  }
+}
