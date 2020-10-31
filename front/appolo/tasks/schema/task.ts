@@ -25,5 +25,5 @@ export default class Task {
   labels: String[];
 
   @Field(type => [String])
-  confidentiality: String[];
+  confidentialities: String[];
 }

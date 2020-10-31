@@ -24,5 +24,5 @@ export class AddTaskInput {
   labels: String[];
 
   @Field(type => [String])
-  confidentiality: String[];
+  confidentialities: String[];
 }

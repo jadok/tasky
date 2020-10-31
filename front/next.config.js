@@ -1,6 +1,7 @@
 const path = require('path')
+const withSass = require('@zeit/next-sass')
 
-module.exports = {
+module.exports = withSass({
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
   },
@@ -18,4 +19,5 @@ module.exports = {
     }
     return config
   },
-}
+  cssModules: true
+});
