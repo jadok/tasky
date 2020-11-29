@@ -1,7 +1,5 @@
-import './styles/template.scss';
+import '../styles/template.scss';
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
-}
+const MyApp = ({ Component, pageProps }) => <Component {...pageProps} />;
 
 export default MyApp

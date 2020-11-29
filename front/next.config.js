@@ -1,10 +1,4 @@
-const path = require('path')
-const withSass = require('@zeit/next-sass')
-
-module.exports = withSass({
-  sassOptions: {
-    includePaths: [path.join(__dirname, 'styles')],
-  },
+module.exports = {
   webpack(config) {
     // Use ts-loader for decorators support
     for (const rule of config.module.rules) {
@@ -19,5 +13,9 @@ module.exports = withSass({
     }
     return config
   },
-  cssModules: true
-});
+  cssModules: true,
+  i18n: {
+    locales: ['en-US', 'fr'],
+    defaultLocale: 'en-US'
+  }
+};

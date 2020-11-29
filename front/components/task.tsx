@@ -1,7 +1,31 @@
 import React from 'react';
+import styled from 'styled-components';
 
 import Labels from './labels';
 import Tag from './tag';
+import markdown from '../utils/markdown';
+
+const Item = styled.li`
+  list-style: none;
+  margin-bottom: 1rem;
+  border-width: .05rem;
+  border-style: solid;
+  border-color: ${({ theme }) => theme.font};
+`;
+
+const Summary = styled.summary`
+  background-color: ${({ theme }) => theme.font};
+  color: ${({ theme }) => theme.bg};
+  padding: .7rem;
+`
+const SummaryWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+
+const DropDown = styled.div`
+  padding-left: calc(.7rem + 1rem);
+`
 
 interface TasksProps {
   components?: {
@@ -15,27 +39,24 @@ const Task = ({
   name,
   description,
   labels = [],
-  renderAPI,
   components = { Labels, Tag },
   confidentialities= [],
 }: TasksProps) => (
-  <li className="task" style={{listStyle: 'none'}}>
+  <Item>
     <details>
-      <summary>
-        <div style={{ display: 'inline-block', width: '90%' }}>
-          <div>
-            <span className="tilte">{name}</span>
-            <components.Labels labels={labels} />
-          </div>
-          <div className="confidentiality">{confidentialities.map((confidentiality) => <components.Tag key={confidentiality} tag={confidentiality} />)}</div>
-        </div>
-      </summary>
-      <div>
-        <div>{description}</div>
-        {/* <div dangerouslySetInnerHTML={{ __html: renderAPI.render(description) }} /> */}
-      </div>
+      <Summary>
+        <span className="tilte">{name}</span>
+        <SummaryWrapper>
+          <components.Labels labels={labels} />
+          <div className="confidentiality">{confidentialities.map((confidentiality) => <Tag key={confidentiality} tag={confidentiality} />)}</div>
+        </SummaryWrapper>
+      </Summary>
+      <DropDown>
+        {/* <div>{description}</div> */}
+        <div dangerouslySetInnerHTML={{ __html: markdown.render(description) }} />
+      </DropDown>
     </details>
-  </li>
+  </Item>
 );
 
 export default Task;

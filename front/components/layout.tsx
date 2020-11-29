@@ -1,6 +1,6 @@
 import React from 'react';
+import Image from 'next/image';
 
-// import Logo from '../../components/Logo';
 import ThemeSwitcher from './theme';
 
 import './home.module.scss';
@@ -8,6 +8,7 @@ import './home.module.scss';
 const Layout = ({ children }): JSX.Element => (
   <div className="container">
     <header>
+      <Image src="/sample-logo-task.png" height={100} width={100} alt={"Logo"} />
       <ThemeSwitcher />
     </header>
     <nav>Navigation</nav>
