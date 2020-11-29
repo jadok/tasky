@@ -9,7 +9,6 @@ export class AddTaskInput {
   @IsDateString()
   date: string;
 
-
   @Field()
   name: String;
 
@@ -17,12 +16,19 @@ export class AddTaskInput {
   description: String;
 
   @Field()
+  @IsDateString()
+  @IsOptional()
+  dueDate: string;
+
+  @Field()
   @IsOptional()
   time: Number = 0;
 
   @Field(type => [String])
+  @IsOptional()
   labels: String[];
 
   @Field(type => [String])
+  @IsOptional()
   confidentialities: String[];
 }

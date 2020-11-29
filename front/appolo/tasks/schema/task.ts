@@ -10,6 +10,10 @@ export default class Task {
   @IsDateString()
   date: string;
 
+  @Field()
+  @IsDateString()
+  @IsOptional()
+  dueDate: string;
 
   @Field()
   name: String;
@@ -22,8 +26,10 @@ export default class Task {
   time: Number = 0;
 
   @Field(type => [String])
+  @IsOptional()
   labels: String[];
 
   @Field(type => [String])
+  @IsOptional()
   confidentialities: String[];
 }
