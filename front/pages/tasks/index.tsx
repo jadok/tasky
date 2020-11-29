@@ -3,13 +3,12 @@ import useSWR from 'swr';
 import { gql } from 'graphql-request';
 import Layout from '../../components/layout';
 import { graphQLClient } from '../../lib/client-graphql';
-import TaskView from 'components/task';
+import TaskView from '../../components/task';
+import { TaskEdit } from '../../components/task-edit';
+import React from 'react';
 
 const List = () => {
-  const router = useRouter();
-  const { id } = router.query;
-
-  const fetcher = async (query) => await graphQLClient.request(query, { id: parseFloat(id as string) });
+  const fetcher = async (query) => await graphQLClient.request(query, {});
 
   const query = gql`
     query lists {
@@ -22,9 +21,7 @@ const List = () => {
       }
     }
   `;
-
-  const { data, error } = useSWR([query, id], fetcher);
-  data && console.log(data.lists)
+  const { data, error } = useSWR([query], fetcher);
 
   return (
     <Layout>
@@ -33,6 +30,7 @@ const List = () => {
 
         {data ? (
           <ul className="tasks">
+            <TaskEdit />
             {data.lists.map(({id, ...props}) => <TaskView key={id} {...props} />)}
           </ul>
         ) : (
