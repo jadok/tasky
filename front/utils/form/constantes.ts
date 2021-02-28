@@ -1,7 +1,7 @@
 import { FieldProps } from './interface';
 
 const fields: Record<string, (_: string) => Partial<FieldProps>> = {
-  title: (value) =>  ({ type: "text", value, placeholder: 'Title', required: true }),
+  name: (value) =>  ({ type: "text", value, placeholder: 'Title', required: true }),
   description: (value) => ({ type: "textarea", value, placeholder: 'Some description', required: true }),
   time: (value) => ({ type: "number",  value, placeholder: '30', required: false }),
   date: (value) => ({ type: "date",  value, placeholder: '', required: false }),
@@ -11,7 +11,7 @@ const fields: Record<string, (_: string) => Partial<FieldProps>> = {
 }
 
 export const taskForm = {
-  title: fields.title,
+  name: fields.name,
   description: fields.description,
   time: fields.time,
   date: fields.date,

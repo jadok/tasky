@@ -7,23 +7,19 @@ export default class Task {
   id: Number
 
   @Field()
-  @IsDateString()
-  date: string;
+  @IsOptional()
+  date: Date;
 
   @Field()
-  @IsDateString()
   @IsOptional()
-  dueDate: string;
+  dueDate: Date;
 
   @Field()
   name: String;
 
   @Field()
-  description: String;
-
-  @Field()
   @IsOptional()
-  time: Number = 0;
+  description: String;
 
   @Field(type => [String])
   @IsOptional()

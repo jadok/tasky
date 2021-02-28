@@ -4,17 +4,45 @@
         "name": "first task",
         "description": "# a title",
         "date": "2020-01-09T16:13:30.340Z",
-        "labels": ["demo"],
-        "confidentialities": ["public"],
+        "labels": [
+            "demo"
+        ],
+        "confidentialities": [
+            "public"
+        ],
         "time": 0
     },
     {
-      "id": 2,
-      "name": "second task",
-      "description": "# what a thing",
-      "date": "2020-02-09T16:13:30.340Z",
-      "labels": ["cool"],
-      "confidentialities": ["public"],
-      "time": 0
-  }
+        "id": 2,
+        "name": "second task",
+        "description": "# what a thing",
+        "date": "2020-02-09T16:13:30.340Z",
+        "labels": [
+            "cool"
+        ],
+        "confidentialities": [
+            "public"
+        ],
+        "time": 0
+    },
+    {
+        "date": "2021-01-17T15:34:24+01:00",
+        "name": "toto",
+        "description": "",
+        "dueDate": "",
+        "time": 0,
+        "labels": [],
+        "confidentialities": [],
+        "id": 3
+    },
+    {
+        "date": "2021-02-28T19:34:09+01:00",
+        "name": "sample",
+        "description": "_texte_",
+        "dueDate": "",
+        "time": null,
+        "labels": [],
+        "confidentialities": [],
+        "id": 4
+    }
 ]

@@ -1,34 +1,32 @@
 import { /* ArgsType, */InputType, Field } from "type-graphql";
+import formatISO from 'date-fns/formatISO';
 import { IsDateString, IsOptional } from 'class-validator';
+import { ISO_FORMAT } from "utils/date";
 
-// import Task from './schema/task';
-/* { description: 'Add a task' }*/
-@InputType()
+const nowDate = () => formatISO(new Date())
+
+@InputType({ description: 'Add a task' })
 export class AddTaskInput {
-  @Field()
+  @Field( { defaultValue: nowDate() })
   @IsDateString()
-  date: string;
+  @IsOptional()
+  date: String;
 
   @Field()
   name: String;
 
-  @Field()
+  @Field({ defaultValue: '' })
   description: String;
 
-  @Field()
-  @IsDateString()
-  @IsOptional()
-  dueDate: string;
+  @Field({ defaultValue: '' })
+  dueDate: String;
 
-  @Field()
-  @IsOptional()
-  time: Number = 0;
+  @Field({ defaultValue: 0 })
+  time: Number;
 
-  @Field(type => [String])
-  @IsOptional()
+  @Field(type => [String], { defaultValue: [] })
   labels: String[];
 
-  @Field(type => [String])
-  @IsOptional()
+  @Field(type => [String], { defaultValue: [] })
   confidentialities: String[];
 }

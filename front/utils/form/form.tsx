@@ -1,5 +1,17 @@
 import React from 'react';
+
 import Field from './field';
+import { FieldProps } from './interface';
+
+export const initFormFields = (formConfigs: Record<string, Partial<FieldProps>>) =>
+  Object.entries(formConfigs)
+    .reduce(
+      (acc, [fieldName, fieldProps]) => {
+        acc[fieldName] = fieldProps.value ?? '';
+        return acc;
+      },
+      {}
+    );
 
 export const Form = ({
   formStructure,
@@ -19,16 +31,16 @@ export const Form = ({
       <h2>{formTitle}</h2>
       {Object.keys(formStructure).map((fieldName) => (
         <Field
-          key={formStructure[fieldName].name}
+          key={fieldName}
           type={formStructure[fieldName].type}
           name={fieldName}
-          value={formStructure[fieldName].value}
+          value={formData[fieldName].value}
           handleChange={handleChange}
           placeholder={formStructure[fieldName].placeholder}
           required={formStructure[fieldName].required}
         />
       ))}
-      <button type="submit" value={buttonText} />
+      <button type="submit">{buttonText}</button>
     </form>
   );
 };
